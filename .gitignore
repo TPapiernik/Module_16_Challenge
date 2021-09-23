@@ -36,7 +36,7 @@ config.py
 config.js
 *.zip
 Backup/
-data/
+data_huge/
 Metadata/
 Starter_Code/
 Workflows/

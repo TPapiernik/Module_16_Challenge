@@ -56,7 +56,7 @@ Additional information about these resources is outlined below in Tables 1 & 2.
 **Table 1: Source Data Description**
 | File Name                               | Brief Description of Contents
 |-----------------------------------------|------------------------------
-| `amazon_reviews_us_Tools_v1_00.tsv` | Tab-Delimited Plaintext File without quote or escape characters, containing Amazon Product Reviews from the Tools Category. First line is Header, remainder of file 1 line corresponds to 1 record. 1,741,101 Lines Containing 1 Header Row and 1,741,100 Reviews with Metadata. Data is taken from United States Marketplace. All Metadata and most reviews are in English. Data is primarily represented using the Basic Latin ASCII Character Set, but there are some Latin-1 Supplement and Latin Extended ASCII and Non-ASCII Unicoce Characters present, most frequently punctuation and symbols such as Registered Trademark, smart quotes, and en dashes. Appearing less frequently, but also present are non-Latin language characters from various world alphabets such as Cyrillic, Greek, Hebrew, Arabic, Korean, Chinese, Japanese, Emoji, Mathematical Symbols, and Diacretics. 15 Fields, described in greater detail below in Table 2.
+| `amazon_reviews_us_Tools_v1_00.tsv` | Tab-Delimited Plaintext File without quote or escape characters, containing Amazon Product Reviews from the Tools Category. First line is Header, remainder of file 1 line corresponds to 1 record. 1,741,101 Lines Containing 1 Header Row and 1,741,100 Reviews with Metadata. Data is taken from United States Marketplace. All Metadata and most reviews are in English. Data is primarily represented using the Basic Latin ASCII Character Set, but there are some Latin-1 Supplement and Latin Extended ASCII and Non-ASCII Unicode Characters present, most frequently punctuation and symbols such as Registered Trademark, smart quotes, and en dashes. Appearing less frequently, but also present are non-Latin language characters from various world alphabets such as Cyrillic, Greek, Hebrew, Arabic, Korean, Chinese, Japanese, Emoji, Mathematical Symbols, and Diacritics. 15 Fields, described in greater detail below in Table 2.
 
 **Table 2: `amazon_reviews_us_Tools_v1_00.tsv` Fields**
 | Field Name                              | Amazon Original Description of Contents                                                                                                                                    | Additional Explanation of Contents
@@ -90,21 +90,26 @@ A cursory review has revealed some reviews written in French.
 
 Out of curiosity, and as a way to test the hypothesis that strongly-worded reviews can be informative, the Review Headline and Review Body text were compared against George Carlin's Seven Words You Can't Say on TV.
 As a first pass, the seven words were included with simple lowercase spellings, with one added variant known already to be present within the text ($#!t). Word boundaries were not enforced, because some reviewers
-get creative with coinages and we did not want to ignore these creations (such as 'EHOLYSHITBALZE!!'). There are some false positives such as 'mishits', 'pushit', 'butits',
-French language reviews mentioning 'petits', and Brand Names like 'Matsushita', or 'Bostitsch'. More work could be done to derive more variants of profane words made up of spelling variations and
-punctuation character substitution, and false positives could be reduced by compiling a whitelist of brand names and benign words containing spellings of profane words.
+have some creative coinages and we did not want to ignore these creations (such as 'EHOLYSHITBALZE!!').
+
+There are some false positives such as 'mishits', 'pushit', 'butits', French language reviews using the word 'petits', and Brand Names (either properly or improperly spelled) like 'Matsushita', or 'Bostitsch' (sic).
+More work could be done to derive more variants of profane words made up of known common spelling variations and punctuation character substitution to find more profane reviews,
+and false positives could be reduced by compiling a whitelist of brand names and benign words which themselves innocently contain spellings of profane words (e.g. ).
 
 'Piss' is the most-frequently appearing profane word among the seven searched for, and most-often appears with its intended
-perjorative sense and not as part of a false-positive making up some other word. In the absense of other more comprehensive means of analysis, a 'piss' check could be a way to quickly find
+pejorative sense and not as part of a false-positive making up some other word. In the absence of other more comprehensive means of analysis, a 'piss' check could be a way to quickly find
 your most-dissatisfied customers!
 
 A cursory review reveals that those reviewers who took the time to mention Jeff Bezos by name do so more often to criticize than to praise.
+
+One final caution is to remember the flexibility and variability of profanity. 'Shit' is commonly mentioned in negative product reviews, but 'the shit' is high praise. Similarly, 'the tits' signifies a highly positive review,
+while the mention of 'tits up' would likely be something to avoid.
 
 ## Deliverables
 
 ### Deliverable 1
 
-
+See `Amazon_Reviews_ETL.ipynb`
 
 ### Deliverable 2
 
