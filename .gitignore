@@ -40,6 +40,10 @@ data_huge/
 Metadata/
 Starter_Code/
 Workflows/
+vine_table_NULL_Replacement.sed
+vine_table_NULL_Replacement_Rows.txt
+vine_table_NULL_Rows.txt
+vine_table_original_with_NULLS.csv
 
 # PyInstaller
 #  Usually these files are written by a python script from a template

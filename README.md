@@ -37,6 +37,8 @@ from Vine members in the selected dataset.
 2. Determine Bias of Vine Reviews
 3. Provide a Written Report on the Analysis (this README.md)
 
+Jump to [Deliverables](#deliverables-1)
+
 ### Resources
 
 - Software:
