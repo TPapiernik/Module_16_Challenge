@@ -115,7 +115,7 @@ See `Amazon_Reviews_ETL.ipynb`
 
 ### Deliverable 2
 
-
+See `Vine_Review_Analysis.ipynb`
 
 ## Results
 
