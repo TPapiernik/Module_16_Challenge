@@ -38,6 +38,7 @@ config.js
 Backup/
 data_huge/
 Metadata/
+R_Analysis/
 Starter_Code/
 Workflows/
 vine_table_NULL_Replacement.sed

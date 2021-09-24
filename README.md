@@ -117,6 +117,22 @@ See `Amazon_Reviews_ETL.ipynb`
 
 See `Vine_Review_Analysis.ipynb`
 
+#### Note for Reviewer:
+
+For Instruction #5. of Deliverable 2, I intentionally followed the instructions quite deliberately as written, without using the results as previously
+determined in Instructions #1.-#4 of Deliverable 2. This being a Computer Programming Exercise, I thought as a Computer would and followed the instructions as written, and did
+not attempt to interpret some other form of intended instruction. I thought that the intention of the instruction may have been to use either the DataFrame
+containing only rows with a `total_vote` count greater-than-or-equal-to 20 created in Instruction #1., or the DataFrame containing only rows with a `total_vote`
+count greater-than-or-equal-to 20 *AND* with the number of `helpful_votes` greater-than-or-equal-to 50% of the `total_votes` created in Instruction #2.
+
+However, this intention was not made clear or requested in Instruction #5., and furthermore the present form of the analysis makes no use of the vote count information in any way.
+Moreover, further down listed under the **Deliverable 2 Requirements**, sub-bullet point #6 which corresponds to the tasks for Instruction #5. states:
+"The *total* number of reviews, the number of 5-star reviews, and the percentage 5-star reviews are calculated for *all* Vine and non-Vine reviews" (emphasis added).
+
+Therefore, for Instruction #5. I reverted to using the original DataFrame as imported, containing *all* reviews, and relied on a simple count of review type to obtain and calculate the results requested.
+If my interpretation of this instruction is incorrect, I can re-run the analysis to obtain a different result as necessary, according to the desired instruction intention.
+
+
 ## Results
 
 - Q: How many Vine reviews and non-Vine reviews were there?
