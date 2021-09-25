@@ -45,6 +45,7 @@ Jump to [Deliverables](#deliverables-1)
 	- PostgreSQL Database, hosted on Amazon Web Services
 	- pgAdmin 4, Version 5.2
 	- Google Colab Notebooks (https://colab.research.google.com)
+	- Jupyter notebook server 6.3.0, running Python 3.7.10 64-bit (Dependencies: os, pandas)
 	- R Version 4.1.1 (2021-08-10) (Libraries: dplyr, ggplot2)
 	- RStudio Version 1.4.1717
 - Data:
@@ -59,7 +60,7 @@ Jump to [Deliverables](#deliverables-1)
 	- `data/vine_table.csv`
 		- User-Exported Comma-Separated-Values file of the `vine_table` Table from AWS/pgAdmin, according to the Instructions provided for Deliverable 1 & Deliverable 2.
 	- `Vine_Review_Analysis.ipynb`
-		- User-Created Code to process `vine_table.csv`, according to the Instructions provided for Deliverable 2.
+		- User-Created Jupyter Notebook Python 3 Code to process `vine_table.csv`, according to the Instructions provided for Deliverable 2.
 
 Additional information about `amazon_reviews_us_Tools_v1_00.tsv` is outlined below in Tables 1 & 2.
 
@@ -206,7 +207,7 @@ towards reviews in the range of 4-5 Stars as compared to how they appear in the 
 ### What additional analysis could be performed to support these conclusions?
 
 An additional analysis that could be performed to support these conclusions would be to compare the Mean of Star Ratings across different
-groups of reviewers.
+sub-groups of reviewers, and not just all the Reviews at once.
 
 Group 1: All Reviews<br>
 Group 2: Reviews from Customers who *only* submitted Non-Vine Reviews<br>
@@ -218,9 +219,9 @@ This analysis was performed via a series of summary operations in R/RStudio, and
 **Table 3: Summary of Average Star Rating Among Different Groups of Customers**
 | Group           | n               | Average star_rating [All Reviews] | Average star_rating [Non-Vine Reviews Only] | Average star_rating [Vine Reviews Only]
 |:---------------:|----------------:|:---------------------------------:|:-------------------------------------------:|:--------------------------------------:
-| 1               | 1,053,515       | 4.262                             |                                             |
+| 1               | 1,053,515       | 4.262                             | 4.261                                       | 4.395
 | 2               | 1,050,766       | 4.186                             |                                             |
-| 3               |     1,245       | 4.351                             | 4.333                                       | 4.370
+| 3               |     1,245       | 4.386                             | 4.391                                       | 4.376
 | 4               |     1,504       | 4.394                             |                                             |
 
 The results shown in in Table 3 demonstrate that overall, Vine Reviews have a higher Average Star Rating than Non-Vine Reviews, to a statistically
@@ -236,6 +237,6 @@ Is there Positivity Bias for each customer who participates in the Vine Program?
 
 Here again, we can conclude that:
 
-**YES**, there is positivity bias for reviews submitted by customers participating in the Vine Program.
+**YES**, on average, there is positivity bias for reviews submitted by customers participating in the Vine Program.
 
 -- END --
