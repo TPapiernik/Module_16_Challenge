@@ -239,4 +239,9 @@ Here again, we can conclude that:
 
 **YES**, on average, there is positivity bias for reviews submitted by customers participating in the Vine Program.
 
+### Future Steps
+
+An interesting follow-on analysis would be to dive deeper into the implications for review sentiment analysis as raised above in the **Profanity Check** Section.
+Is there a statistically-significant difference in Star Rating between reviews that mention profanify, and those that do not?
+
 -- END --
