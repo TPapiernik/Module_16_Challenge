@@ -45,15 +45,23 @@ Jump to [Deliverables](#deliverables-1)
 	- PostgreSQL Database, hosted on Amazon Web Services
 	- pgAdmin 4, Version 5.2
 	- Google Colab Notebooks (https://colab.research.google.com)
+	- R Version 4.1.1 (2021-08-10) (Libraries: dplyr, ggplot2)
+	- RStudio Version 1.4.1717
 - Data:
 	- `https://s3.amazonaws.com/amazon-reviews-pds/tsv/amazon_reviews_us_Tools_v1_00.tsv.gz`
 		- Sample dataset of Amazon Product reviews, obtained from Amazon Web Services
 		- Downloaded/Accessed: 2021-09-21
+		- Not hosted here due to public availability, and to conserve resources
 	- `Amazon_Reviews_ETL_starter_code.ipynb`
 		- Client-provided Starter Code
 		- Imported to Google Colab Notebook and renamed `Amazon_Reviews_ETL.ipynb`
+		- Upon completion, sensitive data was removed and `Amazon_Reviews_ETL.ipynb` was exported and saved locally to disk. This is the version accessible in this GitHub Repository.
+	- `data/vine_table.csv`
+		- User-Exported Comma-Separated-Values file of the `vine_table` Table from AWS/pgAdmin, according to the Instructions provided for Deliverable 1 & Deliverable 2.
+	- `Vine_Review_Analysis.ipynb`
+		- User-Created Code to process `vine_table.csv`, according to the Instructions provided for Deliverable 2.
 
-Additional information about these resources is outlined below in Tables 1 & 2.
+Additional information about `amazon_reviews_us_Tools_v1_00.tsv` is outlined below in Tables 1 & 2.
 
 **Table 1: Source Data Description**
 | File Name                               | Brief Description of Contents
@@ -96,7 +104,7 @@ have some creative coinages and we did not want to ignore these creations (such 
 
 There are some false positives such as 'mishits', 'pushit', 'butits', French language reviews using the word 'petits', and Brand Names (either properly or improperly spelled) like 'Matsushita', or 'Bostitsch' (sic).
 More work could be done to derive more variants of profane words made up of known common spelling variations and punctuation character substitution to find more profane reviews,
-and false positives could be reduced by compiling a whitelist of brand names and benign words which themselves innocently contain spellings of profane words (e.g. ).
+and false positives could be reduced by compiling a whitelist of brand names and benign words which themselves innocently contain spellings of profane words (e.g. 'analysis').
 
 'Piss' is the most-frequently appearing profane word among the seven searched for, and most-often appears with its intended
 pejorative sense and not as part of a false-positive making up some other word. In the absence of other more comprehensive means of analysis, a 'piss' check could be a way to quickly find
@@ -105,7 +113,7 @@ your most-dissatisfied customers!
 A cursory review reveals that those reviewers who took the time to mention Jeff Bezos by name do so more often to criticize than to praise.
 
 One final caution is to remember the flexibility and variability of profanity. 'Shit' is commonly mentioned in negative product reviews, but 'the shit' is high praise. Similarly, 'the tits' signifies a highly positive review,
-while the mention of 'tits up' would likely be something to avoid.
+while the mention of 'tits up' would likely be in reference to something to consider avoiding.
 
 ## Deliverables
 
@@ -119,9 +127,11 @@ See `Vine_Review_Analysis.ipynb`
 
 #### Note for Reviewer:
 
-For Instruction #5. of Deliverable 2, I intentionally followed the instructions quite deliberately as written, without using the results as previously
-determined in Instructions #1.-#4 of Deliverable 2. This being a Computer Programming Exercise, I thought as a Computer would and followed the instructions as written, and did
-not attempt to interpret some other form of intended instruction. I thought that the intention of the instruction may have been to use either the DataFrame
+For Deliverable 2 Instruction #5., I intentionally followed the instructions quite deliberately as written, without using the results as previously
+determined in Deliverable 2 Instructions #1.-#4. This being a Computer Programming Exercise, I thought as a Computer would and followed the instructions exactly as written, and did
+not attempt to interpret some other form of intended instruction.
+
+I thought that the intention of the instruction may have been to use either the DataFrame
 containing only rows with a `total_vote` count greater-than-or-equal-to 20 created in Instruction #1., or the DataFrame containing only rows with a `total_vote`
 count greater-than-or-equal-to 20 *AND* with the number of `helpful_votes` greater-than-or-equal-to 50% of the `total_votes` created in Instruction #2.
 
@@ -135,23 +145,97 @@ If my interpretation of this instruction is incorrect, I can re-run the analysis
 
 ## Results
 
+The summary table of analysis from Deliverable 2, Instruction #5, in `Vine_Review_Analysis.ipynb` is shown here as Figure 1 for
+reference while considering the questions below.
+
+**Figure 1: Vine Review Analysis Results**
+
+![Figure 1](Images/Figure_01.png "Figure 1")
+
+
 - Q: How many Vine reviews and non-Vine reviews were there?
-    - A: Lorem ipsum.
+    - A:
+		- Vine Reviews: 7,761
+		- Non-Vine Reviews: 1,733,339
 
 - Q: How many Vine reviews were 5 stars? How many non-Vine reviews were 5 stars?
-    - A: Lorem ipsum.
+    - A:
+		- Vine Reviews: 4,328
+		- Non-Vine Reviews: 1,109,238
 
 - Q: What percentage of Vine reviews were 5 stars? What percentage of non-Vine reviews were 5 stars?
-    - A: Lorem ipsum.
+    - A:
+		- Vine Reviews: 0.3887%
+		- Non-Vine Reviews: 99.6113%
 
 ## Summary
 
-Is there any positivity bias for reviews in the Vine Program?
+### Is there any positivity bias for reviews in the Vine Program?
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin aliquet iaculis lorem non sollicitudin. Fusce elementum ac elit finibus auctor. Curabitur orci sem, accumsan a diam sit amet, efficitur tristique velit.
+Based solely on the analysis above, it would be very difficult to tell. Using a more robust statistical methodology, such as the 
+Welch Two Sample t-test, we can compare the Means of all the Star Ratings between the Vine Reviews and Non-Vine Reviews.
 
-What additional analysis could be performed to support these conclusions?
+Using this test, we can determine that the Mean Star Rating for Vine Reviews is 4.395, and the Mean Star Rating for the Non-Vine Reviews
+is 4.261. The p-value obtained from this test was 2.2e-16, meaning that we Reject the Null Hypothesis that the Means are Statistically
+Similar, and conclude that they are NOT statistically similar.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin aliquet iaculis lorem non sollicitudin. Fusce elementum ac elit finibus auctor. Curabitur orci sem, accumsan a diam sit amet, efficitur tristique velit.
+The results of this test as performed in R/RStudio are reproduced below in Figure 2.
+
+**Figure 2: Welch Two Sample t-test Results for Vine and Non-Vine Reviews**
+
+![Figure 2](Images/Figure_02.png "Figure 2")
+
+Since the Mean Star Rating for Vine Reviews is *higher* than the
+Mean Star Rating for Non-Vine Reviews, we can conclude that:
+
+**YES**, there is a positivity bias for reviews in the Vine Program.
+
+Another way to check this interpretation is to visually compare a pair of histograms
+for the distribution of Average Star Ratings between Vine and Non-Vine Reviews.
+
+These histograms are shown here in Figure 3.
+
+**Figure 3: Pair of Histograms showing Distribution of Average Star Ratings between Vine and Non-Vine Reviews**
+
+![Figure 3](Images/Figure_03.png "Figure 3")
+
+Comparing these two sets, we can see that among the Vine Reviews, 1-Star Reviews occur less frequently than
+other-Starred Reviews do as compared to how they appear in the Non-Vine Reviews. Also there is a bias
+towards reviews in the range of 4-5 Stars as compared to how they appear in the Non-Vine Reviews.
+
+### What additional analysis could be performed to support these conclusions?
+
+An additional analysis that could be performed to support these conclusions would be to compare the Mean of Star Ratings across different
+groups of reviewers.
+
+Group 1: All Reviews<br>
+Group 2: Reviews from Customers who *only* submitted Non-Vine Reviews<br>
+Group 3: Reviews from Customers who submitted *both* Vine and Non-Vine Reviews<br>
+Group 4: Reviews from Customers who submitted *only* Vine Reviews
+
+This analysis was performed via a series of summary operations in R/RStudio, and the results are produced here in Table 3.
+
+**Table 3: Summary of Average Star Rating Among Different Groups of Customers**
+| Group           | n               | Average star_rating [All Reviews] | Average star_rating [Non-Vine Reviews Only] | Average star_rating [Vine Reviews Only]
+|:---------------:|----------------:|:---------------------------------:|:-------------------------------------------:|:--------------------------------------:
+| 1               | 1,053,515       | 4.262                             |                                             |
+| 2               | 1,050,766       | 4.186                             |                                             |
+| 3               |     1,245       | 4.351                             | 4.333                                       | 4.370
+| 4               |     1,504       | 4.394                             |                                             |
+
+The results shown in in Table 3 demonstrate that overall, Vine Reviews have a higher Average Star Rating than Non-Vine Reviews, to a statistically
+significant degree as discussed previously. Furthermore, among customers who submitted both reviews for the Vine Program and not as part of the Vine Program,
+the Vine Reviews from those customers were higher on average than the reviews they had submitted outside the program.
+
+If the difference in Average Star Rating for each customer in this group for their Vine Reviews and Non-Vine Reviews is taken, and then an average of all those
+difference values is calculated, the result is 0.0368, a positive number. This means that more often than not, the difference between Vine and Non-Vine
+Reviews is a positive difference, on average an increase of 0.0368 Stars per customer between Non-Vine and Vine Reviews.
+
+Performing the analysis in this manner reduces the effect of searching for a Positivity Bias across the whole data set in aggregate, and instead asks the more targeted question:
+Is there Positivity Bias for each customer who participates in the Vine Program?
+
+Here again, we can conclude that:
+
+**YES**, there is positivity bias for reviews submitted by customers participating in the Vine Program.
 
 -- END --
