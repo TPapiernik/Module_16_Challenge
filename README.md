@@ -217,12 +217,12 @@ Group 4: Reviews from Customers who submitted *only* Vine Reviews
 This analysis was performed via a series of summary operations in R/RStudio, and the results are produced here in Table 3.
 
 **Table 3: Summary of Average Star Rating Among Different Groups of Customers**
-| Group           | n               | Average star_rating [All Reviews] | Average star_rating [Non-Vine Reviews Only] | Average star_rating [Vine Reviews Only]
+| Group           | n Customers     | Average star_rating [All Reviews] | Average star_rating [Non-Vine Reviews Only] | Average star_rating [Vine Reviews Only]
 |:---------------:|----------------:|:---------------------------------:|:-------------------------------------------:|:--------------------------------------:
-| 1               | 1,053,515       | 4.262                             | 4.261                                       | 4.395
-| 2               | 1,050,766       | 4.186                             |                                             |
-| 3               |     1,245       | 4.386                             | 4.391                                       | 4.376
-| 4               |     1,504       | 4.394                             |                                             |
+| 1               | 1,053,515       | 4.262 (n Reviews=1,741,100)       | 4.261 (n Reviews=1,733,339)                 | 4.395 (n Reviews=7,761)
+| 2               | 1,050,766       | 4.186 (n Reviews=1,725,140)       |                                             |
+| 3               |     1,245       | 4.386 (n Reviews=12,653)          | 4.391 (n Reviews=8,199)                     | 4.376 (n Reviews=4,454)
+| 4               |     1,504       | 4.394 (n Reviews=3,307)           |                                             |
 
 The results shown in in Table 3 demonstrate that overall, Vine Reviews have a higher Average Star Rating than Non-Vine Reviews, to a statistically
 significant degree as discussed previously. Furthermore, among customers who submitted both reviews for the Vine Program and not as part of the Vine Program,
