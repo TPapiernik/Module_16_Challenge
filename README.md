@@ -242,6 +242,6 @@ Here again, we can conclude that:
 ### Future Steps
 
 An interesting follow-on analysis would be to dive deeper into the implications for review sentiment analysis as raised above in the **Profanity Check** Section.
-Is there a statistically-significant difference in Star Rating between reviews that mention profanify, and those that do not?
+Is there a statistically-significant difference in Star Rating between reviews that mention profanity, and those that do not?
 
 -- END --
